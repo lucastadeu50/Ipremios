@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ipremios</string>
+    <string name="passwordHint">Password</string>
+    <string name="buttonLogin">Enter</string>
+    <string name="userHint">Username</string>
+    <string name="accessToken">acessToken</string>
+</resources>
