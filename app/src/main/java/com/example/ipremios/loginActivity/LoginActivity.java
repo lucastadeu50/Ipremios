@@ -40,9 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         textInputPassword = findViewById(R.id.editTextPassword);
         materialButton = findViewById(R.id.buttonEnter);
 
-
-
-
         materialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 Session session = new Session(textInputPassword.getText().toString(), textInputEmail.getText().toString());
                 User user = new User(session);
-
-
 
                 final Call<Token> call = networkInterface.userLogin(user);
 
