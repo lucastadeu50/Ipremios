@@ -131,7 +131,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void formValidation(String email, String password) {
-
         if (email.equals("")) {
             textInputEmail.setError(getString(R.string.error_field_required));
             textInputEmail.requestFocus();
