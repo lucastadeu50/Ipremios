@@ -20,7 +20,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
-    private static final String TAG = "MainActivity";
     private static final String BEARER = "Bearer ";
 
     private RecyclerView recyclerView;
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         SharedPreferences sharedPreferences = getSharedPreferences("mysettings",
                 Context.MODE_PRIVATE);
         String accessToken = sharedPreferences.getString(getString(R.string.accessToken), "");
-        Log.d(TAG, "onCreate: mystring " + accessToken);
 
         String token = BEARER + accessToken;
 

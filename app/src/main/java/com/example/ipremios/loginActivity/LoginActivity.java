@@ -22,7 +22,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
 
-    private static final String TAG = "LoginActivity";
     private LoginContract.presenter presenter;
 
     ProgressBar progressBar;
