@@ -1,4 +1,4 @@
-package com.example.ipremios.model.ListItem;
+package com.example.ipremios.model.listItem;
 
 import android.os.Parcel;
 import android.os.Parcelable;

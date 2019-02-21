@@ -1,4 +1,4 @@
-package com.example.ipremios.model;
+package com.example.ipremios.model.userLogin;
 
 import com.google.gson.annotations.SerializedName;
 

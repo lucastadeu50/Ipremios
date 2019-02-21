@@ -1,4 +1,4 @@
-package com.example.ipremios.MainActivity;
+package com.example.ipremios.mainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,7 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.ipremios.R;
-import com.example.ipremios.model.ListItem.Item;
+import com.example.ipremios.model.listItem.Item;
 import com.example.ipremios.network.NetworkClient;
 import com.example.ipremios.network.NetworkInterface;
 

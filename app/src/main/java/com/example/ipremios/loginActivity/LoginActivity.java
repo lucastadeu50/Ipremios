@@ -12,11 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.ipremios.MainActivity.MainActivity;
+import com.example.ipremios.mainActivity.MainActivity;
 import com.example.ipremios.R;
-import com.example.ipremios.model.Session;
-import com.example.ipremios.model.Token;
-import com.example.ipremios.model.User;
+import com.example.ipremios.model.userLogin.Session;
+import com.example.ipremios.model.responsePost.Token;
+import com.example.ipremios.model.userLogin.User;
 import com.example.ipremios.network.NetworkClient;
 import com.example.ipremios.network.NetworkInterface;
 import com.google.android.material.button.MaterialButton;

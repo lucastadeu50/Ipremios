@@ -1,5 +1,6 @@
-package com.example.ipremios.model;
+package com.example.ipremios.model.userLogin;
 
+import com.example.ipremios.model.userLogin.Session;
 import com.google.gson.annotations.SerializedName;
 
 public class User{

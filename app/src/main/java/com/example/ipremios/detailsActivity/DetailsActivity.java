@@ -3,15 +3,13 @@ package com.example.ipremios.detailsActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ipremios.R;
-import com.example.ipremios.model.ListItem.Item;
-import com.example.ipremios.model.ListItem.ItensItem;
+import com.example.ipremios.model.listItem.ItensItem;
 
 public class DetailsActivity extends AppCompatActivity {
 

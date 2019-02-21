@@ -1,10 +1,8 @@
-package com.example.ipremios.MainActivity;
+package com.example.ipremios.mainActivity;
 
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.ipremios.R;
 import com.example.ipremios.detailsActivity.DetailsActivity;
-import com.example.ipremios.model.ListItem.ItensItem;
+import com.example.ipremios.model.listItem.ItensItem;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;

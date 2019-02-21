@@ -1,5 +1,6 @@
-package com.example.ipremios.model;
+package com.example.ipremios.model.responsePost;
 
+import com.example.ipremios.model.responsePost.Response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
