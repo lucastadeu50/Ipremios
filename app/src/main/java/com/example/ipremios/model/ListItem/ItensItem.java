@@ -1,12 +1,36 @@
 package com.example.ipremios.model.ListItem;
 
-public class ItensItem{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ItensItem implements Parcelable {
 	private String image;
 	private String image_medium;
 	private String description;
 	private String title;
 	private String uuid;
 	private String image_thumb;
+
+	protected ItensItem(Parcel in) {
+		image = in.readString();
+		image_medium = in.readString();
+		description = in.readString();
+		title = in.readString();
+		uuid = in.readString();
+		image_thumb = in.readString();
+	}
+
+	public static final Creator<ItensItem> CREATOR = new Creator<ItensItem>() {
+		@Override
+		public ItensItem createFromParcel(Parcel in) {
+			return new ItensItem(in);
+		}
+
+		@Override
+		public ItensItem[] newArray(int size) {
+			return new ItensItem[size];
+		}
+	};
 
 	public void setImage(String image){
 		this.image = image;
@@ -68,4 +92,19 @@ public class ItensItem{
 			",image_thumb = '" + image_thumb + '\'' +
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(image);
+		dest.writeString(image_medium);
+		dest.writeString(description);
+		dest.writeString(title);
+		dest.writeString(uuid);
+		dest.writeString(image_thumb);
+	}
 }

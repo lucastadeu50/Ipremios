@@ -2,6 +2,8 @@ package com.example.ipremios.MainActivity;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ipremios.R;
+import com.example.ipremios.detailsActivity.DetailsActivity;
 import com.example.ipremios.model.ListItem.ItensItem;
 import com.google.android.material.card.MaterialCardView;
 
@@ -40,7 +43,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         String url = itens.get(position).getImageThumb();
         Glide.with(context)
@@ -58,6 +61,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("itens", itens.get(position));
+                context.startActivity(intent);
             }
         });
     }

@@ -7,21 +7,21 @@ public class Response{
 
 	@SerializedName("accessToken")
 	@Expose
-	private String accessToken;
+	private String access_token;
 
 	public void setAccessToken(String accessToken){
-		this.accessToken = accessToken;
+		this.access_token = accessToken;
 	}
 
 	public String getAccessToken(){
-		return accessToken;
+		return access_token;
 	}
 
 	@Override
  	public String toString(){
 		return 
 			"Response{" + 
-			"access_token = '" + accessToken + '\'' + 
+			"access_token = '" + access_token + '\'' +
 			"}";
 		}
 }
