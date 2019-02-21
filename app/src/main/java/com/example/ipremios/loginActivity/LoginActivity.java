@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
         materialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,14 +60,18 @@ public class LoginActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Token>() {
                     @Override
                     public void onResponse(Call<Token> call, retrofit2.Response<Token> response) {
-                        Log.d(TAG, "onResponse: " + response);
                         if (response.isSuccessful()) {
                             Token response1 = response.body();
                             Log.d(TAG, "onResponse: " + response1.getResponse().getAccessToken());
-                            SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPref.edit();
+
+
+                            SharedPreferences settings = getSharedPreferences("mysettings",
+                                    Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = settings.edit();
                             editor.putString(getString(R.string.accessToken), response1.getResponse().getAccessToken());
                             editor.commit();
+
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }

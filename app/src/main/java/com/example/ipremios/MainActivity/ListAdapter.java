@@ -52,7 +52,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 .into(holder.imageViewTumb);
 
 
-        Log.d(TAG, "onBindViewHolder: " + itens.get(position).getImageThumb());
 
        holder.textViewTitle.setText(itens.get(position).getTitle());
        holder.textViewDescription.setText(itens.get(position).getDescription().substring(0, 50) + "...");

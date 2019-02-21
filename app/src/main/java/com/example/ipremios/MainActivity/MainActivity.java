@@ -15,16 +15,14 @@ import android.widget.Toast;
 
 import com.example.ipremios.R;
 import com.example.ipremios.model.ListItem.Item;
-import com.example.ipremios.model.ListItem.ItensItem;
 import com.example.ipremios.network.NetworkClient;
 import com.example.ipremios.network.NetworkInterface;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private static final String BEARER = "Bearer ";
 
     RecyclerView recyclerView;
 
@@ -34,15 +32,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        SharedPreferences settings = getSharedPreferences("mysettings",
+                Context.MODE_PRIVATE);
+        String accessToken = settings.getString(getString(R.string.accessToken), "");
+        Log.d(TAG, "onCreate: mystring " + accessToken);
+
+
         recyclerView = findViewById(R.id.recyclerView);
 
-
-
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String accessToken = sharedPref.getString(getString(R.string.accessToken), null);
-        Log.d(TAG, "onCreate: " + accessToken);
-
-        String token = "Bearer " + "D3mF5BDti3wGHTKpqSF7YXmT";
+        String token = BEARER + accessToken;
 
         NetworkInterface networkInterface = NetworkClient.getRetrofit().create(NetworkInterface.class);
 

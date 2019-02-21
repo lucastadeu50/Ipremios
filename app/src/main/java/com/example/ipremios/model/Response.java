@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class Response{
 
-	@SerializedName("accessToken")
+	@SerializedName("access_token")
 	@Expose
 	private String access_token;
 
-	public void setAccessToken(String accessToken){
-		this.access_token = accessToken;
+	public void setAccessToken(String access_token){
+		this.access_token = access_token;
 	}
 
 	public String getAccessToken(){
