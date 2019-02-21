@@ -18,13 +18,12 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
     @Override
     public void onButtonClick(User user) {
 
-        if(loginView != null){
-         loginView.showProgress();
+        if (loginView != null) {
+            loginView.showProgress();
         }
-     getLoginIntractor.getLogin(this, user);
+        getLoginIntractor.getLogin(this, user);
 
     }
-
 
 
     @Override
@@ -34,7 +33,7 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
 
     @Override
     public void onValidationSuccess(String email, String password) {
-        if (loginView != null){
+        if (loginView != null) {
             loginView.formValidation(email, password);
         }
 
@@ -43,16 +42,16 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
 
     @Override
     public void onFinished(Token token, boolean loginSuccess) {
-        if(loginView != null){
-          loginView.login(loginSuccess, token);
-          loginView.hideProgress();
+        if (loginView != null) {
+            loginView.login(loginSuccess, token);
+            loginView.hideProgress();
         }
     }
 
 
     @Override
     public void onFailure(Throwable t) {
-        if(loginView != null){
+        if (loginView != null) {
             loginView.onResponseFailure(t);
             loginView.hideProgress();
         }
@@ -60,12 +59,11 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
 
     @Override
     public void onLoginFailure(boolean loginSuccess) {
-        if(!loginSuccess){
+        if (!loginSuccess) {
             loginView.hideProgress();
             loginView.onAuthFailure();
 
         }
-
 
 
     }

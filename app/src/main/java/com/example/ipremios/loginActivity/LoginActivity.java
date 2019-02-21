@@ -21,7 +21,7 @@ import com.example.ipremios.model.userLogin.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView{
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
 
     private static final String TAG = "LoginActivity";
     private LoginContract.presenter presenter;
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        presenter = new LoginPresenterImpl(this, new LoginIntractor() );
+        presenter = new LoginPresenterImpl(this, new LoginIntractor());
 
         textInputEmail = findViewById(R.id.editTextEmail);
         textInputPassword = findViewById(R.id.editTextPassword);
@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
                 password = textInputPassword.getText().toString();
                 presenter.onValidationSuccess(email, password);
 
-                if(isEmailValid(email) && isPasswordValid(password)) {
-                    Session session = new Session(password,email);
+                if (isEmailValid(email) && isPasswordValid(password)) {
+                    Session session = new Session(password, email);
                     User user = new User(session);
                     initProgressBar();
                     presenter.requestDataFromServer(user);
@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
             }
         });
     }
-
 
 
     private void initProgressBar() {
@@ -99,8 +98,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
                 "Something went wrong...Error message: " + throwable.getMessage(),
                 Toast.LENGTH_LONG).show();
     }
+
     @Override
-    public  void onAuthFailure(){
+    public void onAuthFailure() {
         Toast.makeText(context, getString(R.string.error_incorrect_password_email), Toast.LENGTH_SHORT).show();
     }
 
@@ -132,19 +132,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @Override
     public void formValidation(String email, String password) {
 
-        if (email.equals("")){
+        if (email.equals("")) {
             textInputEmail.setError(getString(R.string.error_field_required));
             textInputEmail.requestFocus();
-        }
-        else if(!isEmailValid(email)){
+        } else if (!isEmailValid(email)) {
             textInputEmail.setError(getString(R.string.error_invalid_email));
             textInputEmail.requestFocus();
-        }
-        else if (password.equals("")){
+        } else if (password.equals("")) {
             textInputPassword.setError(getString(R.string.error_field_required));
             textInputPassword.requestFocus();
-        }
-        else if (!isPasswordValid(password)){
+        } else if (!isPasswordValid(password)) {
             textInputPassword.setError(getString(R.string.error_invalid_password));
             textInputPassword.requestFocus();
         }

@@ -7,7 +7,7 @@ import com.example.ipremios.model.userLogin.User;
 public interface LoginContract {
 
 
-    interface presenter{
+    interface presenter {
 
         void onButtonClick(User user);
 
@@ -17,7 +17,7 @@ public interface LoginContract {
 
     }
 
-       interface LoginView {
+    interface LoginView {
         void onResponseFailure(Throwable throwable);
 
         void onAuthFailure();
@@ -36,7 +36,9 @@ public interface LoginContract {
 
         interface OnFinishedListener {
             void onFinished(Token token, boolean loginSuccess);
+
             void onFailure(Throwable t);
+
             void onLoginFailure(boolean loginSuccess);
         }
 

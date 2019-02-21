@@ -34,8 +34,7 @@ public class LoginIntractor implements LoginContract.GetLoginIntractor {
             public void onResponse(Call<Token> call, retrofit2.Response<Token> response) {
                 if (response.isSuccessful()) {
                     onFinishedListener.onFinished(response.body(), true);
-                }
-                else{
+                } else {
                     onFinishedListener.onLoginFailure(false);
                 }
             }
