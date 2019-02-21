@@ -1,10 +1,7 @@
 package com.example.ipremios.mainActivity;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 
-import com.example.ipremios.R;
 import com.example.ipremios.model.listItem.Item;
 import com.example.ipremios.network.NetworkClient;
 import com.example.ipremios.network.NetworkInterface;
