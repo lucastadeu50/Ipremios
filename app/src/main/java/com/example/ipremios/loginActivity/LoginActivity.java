@@ -1,4 +1,4 @@
-package com.example.ipremios;
+package com.example.ipremios.loginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.ipremios.MainActivity.MainActivity;
+import com.example.ipremios.R;
 import com.example.ipremios.model.Session;
 import com.example.ipremios.model.Token;
 import com.example.ipremios.model.User;
