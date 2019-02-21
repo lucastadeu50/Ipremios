@@ -33,9 +33,10 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
 
 
     @Override
-    public void onFinished(Token token, boolean loginSucess) {
+    public void onFinished(Token token, boolean loginSuccess) {
         if(loginView != null){
-            loginView.login(loginSucess, token);
+
+          loginView.login(loginSuccess, token);
           loginView.hideProgress();
         }
     }
@@ -45,6 +46,13 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
     public void onFailure(Throwable t) {
         if(loginView != null){
             loginView.onResponseFailure(t);
+            loginView.hideProgress();
+        }
+    }
+
+    @Override
+    public void onLoginFailure(boolean loginSuccess) {
+        if(!loginSuccess){
             loginView.hideProgress();
         }
     }

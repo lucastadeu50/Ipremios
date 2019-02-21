@@ -40,6 +40,7 @@ public interface LoginContract {
         interface OnFinishedListener {
             void onFinished(Token token, boolean loginSuccess);//mudar
             void onFailure(Throwable t);
+            void onLoginFailure(boolean loginSuccess);
         }
 
         void getLogin(OnFinishedListener onFinishedListener, User user);

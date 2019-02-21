@@ -35,7 +35,12 @@ public class LoginIntractor implements LoginContract.GetLoginIntractor {
         call.enqueue(new Callback<Token>() {
             @Override
             public void onResponse(Call<Token> call, retrofit2.Response<Token> response) {
-                onFinishedListener.onFinished(response.body(), true);
+                if (response.isSuccessful()) {
+                    onFinishedListener.onFinished(response.body(), true);
+                }
+                else{
+                    onFinishedListener.onLoginFailure(false);
+                }
             }
 
             @Override
