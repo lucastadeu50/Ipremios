@@ -22,15 +22,12 @@ public class LoginIntractor implements LoginContract.GetLoginIntractor {
 
     @Override
     public void getLogin(final OnFinishedListener onFinishedListener, User user) {
-        /** Create handle for the NetworkInterface interface*/
         NetworkInterface networkInterface = NetworkClient.getRetrofit().create(NetworkInterface.class);
 
-        /** Call the method with parameter in the interface to get the login data*/
         Log.d(TAG, "getLogin: username" + user.getSession().getEmail());
 
         final Call<Token> call = networkInterface.userLogin(user);
 
-        /**Log the URL called*/
 
         call.enqueue(new Callback<Token>() {
             @Override
