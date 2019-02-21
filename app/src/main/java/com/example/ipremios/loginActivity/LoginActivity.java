@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     Context context = LoginActivity.this;
 
+    String email = "";
+    String password = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +48,46 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         materialButton = findViewById(R.id.buttonEnter);
 
         materialButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Session session = new Session(textInputPassword.getText().toString(), textInputEmail.getText().toString());
-                User user = new User(session);
-                initProgressBar();
-                presenter.requestDataFromServer(user);
-                presenter.onButtonClick(user);
+                email = textInputEmail.getText().toString();
+                password = textInputPassword.getText().toString();
+
+                Log.d(TAG, "onClick: " + email);
+
+                checkCredentials(email, password);
+
             }
         });
     }
+
+    private void checkCredentials(String email, String password) {
+        if(isEmailValid(email) && isPasswordValid(password)) {
+            Session session = new Session(password,email);
+            User user = new User(session);
+            initProgressBar();
+            presenter.requestDataFromServer(user);
+            presenter.onButtonClick(user);
+        }
+        else if (email.equals("")){
+            textInputEmail.setError(getString(R.string.error_field_required));
+            textInputEmail.requestFocus();
+        }
+        else if(!isEmailValid(email)){
+            textInputEmail.setError(getString(R.string.error_invalid_email));
+            textInputEmail.requestFocus();
+        }
+        else if (password.equals("")){
+            textInputPassword.setError(getString(R.string.error_field_required));
+            textInputPassword.requestFocus();
+        }
+        else if (!isPasswordValid(password)){
+            textInputPassword.setError(getString(R.string.error_invalid_password));
+            textInputPassword.requestFocus();
+        }
+    }
+
     private void initProgressBar() {
         progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
         progressBar.setIndeterminate(true);
@@ -70,12 +103,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     }
 
 
+    private boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        return password.length() > 5;
+    }
+
+
     @Override
     public void onResponseFailure(Throwable throwable) {
         Toast.makeText(LoginActivity.this,
                 "Something went wrong...Error message: " + throwable.getMessage(),
                 Toast.LENGTH_LONG).show();
     }
+    @Override
+    public  void onAuthFailure(){
+        Toast.makeText(context, getString(R.string.error_incorrect_password_email), Toast.LENGTH_SHORT).show();
+    }
+
+
     @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);

@@ -1,5 +1,6 @@
 package com.example.ipremios.loginActivity;
 
+import com.example.ipremios.R;
 import com.example.ipremios.model.responsePost.Token;
 import com.example.ipremios.model.userLogin.User;
 
@@ -35,7 +36,6 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
     @Override
     public void onFinished(Token token, boolean loginSuccess) {
         if(loginView != null){
-
           loginView.login(loginSuccess, token);
           loginView.hideProgress();
         }
@@ -54,6 +54,11 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
     public void onLoginFailure(boolean loginSuccess) {
         if(!loginSuccess){
             loginView.hideProgress();
+            loginView.onAuthFailure();
+
         }
+
+
     }
+
 }

@@ -41,19 +41,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         String accessToken = sharedPreferences.getString(getString(R.string.accessToken), "");
         Log.d(TAG, "onCreate: mystring " + accessToken);
 
-
-
         String token = BEARER + accessToken;
-
-
 
         presenter = new MainPresenterImpl(this, new GetDataInteractorImpl());
         presenter.requestDataFromServer(token);
-
-
-
-
-
 
 
     }

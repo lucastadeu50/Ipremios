@@ -6,25 +6,24 @@ import com.example.ipremios.model.userLogin.User;
 
 public interface LoginContract {
 
-    /**
-     * Call when user interact with the view and other when view OnDestroy()
-     * */
+
     interface presenter{
 
         void onButtonClick(User user);
 
         void requestDataFromServer(User user);
 
+
+
+
     }
 
-    /**
-     * showProgress() and hideProgress() would be used for displaying and hiding the progressBar
-     * while the setDataToRecyclerView and onResponseFailure is fetched from the GetNoticeInteractorImpl class
-     **/
-    interface LoginView {
+       interface LoginView {
         void onResponseFailure(Throwable throwable);
 
-        void showProgress();
+           void onAuthFailure();
+
+           void showProgress();
 
         void hideProgress();
 
@@ -32,13 +31,10 @@ public interface LoginContract {
 
     }
 
-    /**
-     * Intractors are classes built for fetching data from your database, web services, or any other data source.
-     **/
     interface GetLoginIntractor {
 
         interface OnFinishedListener {
-            void onFinished(Token token, boolean loginSuccess);//mudar
+            void onFinished(Token token, boolean loginSuccess);
             void onFailure(Throwable t);
             void onLoginFailure(boolean loginSuccess);
         }

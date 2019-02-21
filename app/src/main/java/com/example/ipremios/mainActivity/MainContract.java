@@ -12,7 +12,6 @@ public interface MainContract {
      * */
     interface presenter{
 
-        void onButtonClick(String token);
 
         void requestDataFromServer(String token);
 

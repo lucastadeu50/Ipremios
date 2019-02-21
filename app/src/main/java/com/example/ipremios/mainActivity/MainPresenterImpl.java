@@ -16,14 +16,6 @@ public class MainPresenterImpl implements MainContract.presenter, MainContract.G
     }
 
 
-    @Override
-    public void onButtonClick(String token) {
-
-        if (mainView != null) {
-        }
-        getDataIntractor.getDataList(this, token);
-
-    }
 
     @Override
     public void requestDataFromServer(String token) {
@@ -44,4 +36,5 @@ public class MainPresenterImpl implements MainContract.presenter, MainContract.G
             mainView.onResponseFailure(t);
         }
     }
+
 }

@@ -18,10 +18,6 @@ public class GetDataInteractorImpl implements MainContract.GetDataIntractor {
     public void getDataList(final OnFinishedListener onFinishedListener, String token) {
         NetworkInterface networkInterface = NetworkClient.getRetrofit().create(NetworkInterface.class);
 
-
-
-
-
         final Call<Item> call = networkInterface.getData(token);
 
         call.enqueue(new Callback<Item>() {
