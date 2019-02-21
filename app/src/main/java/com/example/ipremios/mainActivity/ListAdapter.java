@@ -28,7 +28,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public ListAdapter(Context context, List<ItensItem> itens) {
         this.context = context;
-        this.itens= itens;
+        this.itens = itens;
     }
 
     @NonNull
@@ -50,9 +50,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 .into(holder.imageViewTumb);
 
 
-
-       holder.textViewTitle.setText(itens.get(position).getTitle());
-       holder.textViewDescription.setText(itens.get(position).getDescription().substring(0, 50) + "...");
+        holder.textViewTitle.setText(itens.get(position).getTitle());
+        holder.textViewDescription.setText(itens.get(position).getDescription().substring(0, 50) + "...");
 
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +69,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return itens.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewTitle;
         TextView textViewDescription;
@@ -92,9 +91,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         }
     }
-
-
-
 
 
 }

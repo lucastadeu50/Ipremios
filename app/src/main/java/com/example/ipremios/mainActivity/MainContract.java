@@ -9,8 +9,8 @@ public interface MainContract {
 
     /**
      * Call when user interact with the view and other when view OnDestroy()
-     * */
-    interface presenter{
+     */
+    interface presenter {
 
 
         void requestDataFromServer(String token);
@@ -36,6 +36,7 @@ public interface MainContract {
 
         interface OnFinishedListener {
             void onFinished(List<ItensItem> itens);
+
             void onFailure(Throwable t);
         }
 

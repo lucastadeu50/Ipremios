@@ -1,7 +1,6 @@
 package com.example.ipremios.mainActivity;
 
 
-
 import com.example.ipremios.model.listItem.Item;
 import com.example.ipremios.network.NetworkClient;
 import com.example.ipremios.network.NetworkInterface;
@@ -28,6 +27,7 @@ public class GetDataInteractorImpl implements MainContract.GetDataIntractor {
                     onFinishedListener.onFinished(response.body().getItens());
                 }
             }
+
             @Override
             public void onFailure(Call<Item> call, Throwable t) {
                 onFinishedListener.onFailure(t);

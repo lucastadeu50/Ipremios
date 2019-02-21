@@ -16,7 +16,6 @@ public class MainPresenterImpl implements MainContract.presenter, MainContract.G
     }
 
 
-
     @Override
     public void requestDataFromServer(String token) {
         getDataIntractor.getDataList(this, token);

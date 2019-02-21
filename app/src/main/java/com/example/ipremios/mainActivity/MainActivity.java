@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     private MainContract.presenter presenter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
 
         recyclerView = findViewById(R.id.recyclerView);
-      RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
 
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void setDataToRecyclerView(List<ItensItem> itens) {
-        ListAdapter adapter = new ListAdapter(MainActivity.this , itens);
+        ListAdapter adapter = new ListAdapter(MainActivity.this, itens);
         recyclerView.setAdapter(adapter);
 
     }
