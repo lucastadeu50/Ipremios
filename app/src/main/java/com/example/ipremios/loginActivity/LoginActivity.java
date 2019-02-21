@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -95,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @Override
     public void onResponseFailure(Throwable throwable) {
         Toast.makeText(LoginActivity.this,
-                "Something went wrong...Error message: " + throwable.getMessage(),
+                 throwable.getMessage(),
                 Toast.LENGTH_LONG).show();
     }
 

@@ -75,6 +75,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         TextView textViewDescription;
 
         ImageView imageViewTumb;
+
+
         MaterialCardView parentLayout;
 
 

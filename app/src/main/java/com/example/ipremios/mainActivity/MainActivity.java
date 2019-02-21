@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @Override
     public void onResponseFailure(Throwable throwable) {
         Toast.makeText(MainActivity.this,
-                "Something went wrong...Error message: " + throwable.getMessage(),
+                  throwable.getMessage(),
                 Toast.LENGTH_LONG).show();
     }
 }
