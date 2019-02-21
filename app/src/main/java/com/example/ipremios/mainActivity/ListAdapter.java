@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private static final String TAG = "RecyclerViewJogadoresAd";
+
 
     private Context context;
     private List<ItensItem> itens;
