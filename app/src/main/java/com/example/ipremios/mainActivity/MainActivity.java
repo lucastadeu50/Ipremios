@@ -3,9 +3,7 @@ package com.example.ipremios.mainActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,17 +12,21 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.ipremios.R;
-import com.example.ipremios.model.listItem.Item;
-import com.example.ipremios.network.NetworkClient;
-import com.example.ipremios.network.NetworkInterface;
+import com.example.ipremios.model.listItem.ItensItem;
 
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+
+public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
     private static final String TAG = "MainActivity";
     private static final String BEARER = "Bearer ";
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+
+    private MainContract.presenter presenter;
+
 
 
     @Override
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        initializeRecyclerView();
 
         SharedPreferences sharedPreferences = getSharedPreferences("mysettings",
                 Context.MODE_PRIVATE);
@@ -40,34 +42,43 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: mystring " + accessToken);
 
 
-        recyclerView = findViewById(R.id.recyclerView);
 
         String token = BEARER + accessToken;
 
-        NetworkInterface networkInterface = NetworkClient.getRetrofit().create(NetworkInterface.class);
 
 
-        final Call<Item> call = networkInterface.getData(token);
+        presenter = new MainPresenterImpl(this, new GetDataInteractorImpl());
+        presenter.requestDataFromServer(token);
 
-        call.enqueue(new Callback<Item>() {
-            @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
 
-                if (response.isSuccessful()) {
-                    Item item = response.body();
-                    Log.d(TAG, "onResponse: " + item.getItens().get(0).getTitle());
-                    ListAdapter adapter = new ListAdapter(MainActivity.this, item.getItens());
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                }
-            }
-            @Override
-            public void onFailure(Call<Item> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
 
-        });
+
+
+
 
     }
 
+    private void initializeRecyclerView() {
+
+
+        recyclerView = findViewById(R.id.recyclerView);
+      RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+    }
+
+    @Override
+    public void setDataToRecyclerView(List<ItensItem> itens) {
+        ListAdapter adapter = new ListAdapter(MainActivity.this , itens);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onResponseFailure(Throwable throwable) {
+        Toast.makeText(MainActivity.this,
+                "Something went wrong...Error message: " + throwable.getMessage(),
+                Toast.LENGTH_LONG).show();
+    }
 }
