@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        SharedPreferences settings = getSharedPreferences("mysettings",
+        SharedPreferences sharedPreferences = getSharedPreferences("mysettings",
                 Context.MODE_PRIVATE);
-        String accessToken = settings.getString(getString(R.string.accessToken), "");
+        String accessToken = sharedPreferences.getString(getString(R.string.accessToken), "");
         Log.d(TAG, "onCreate: mystring " + accessToken);
 
 

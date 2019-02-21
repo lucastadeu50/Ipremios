@@ -65,11 +65,11 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "onResponse: " + response1.getResponse().getAccessToken());
 
 
-                            SharedPreferences settings = getSharedPreferences("mysettings",
+                            SharedPreferences sharedPreferences = getSharedPreferences("mysettings",
                                     Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = settings.edit();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(getString(R.string.accessToken), response1.getResponse().getAccessToken());
-                            editor.commit();
+                            editor.apply();
 
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

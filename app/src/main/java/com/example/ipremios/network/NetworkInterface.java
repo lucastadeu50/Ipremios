@@ -14,7 +14,6 @@ import retrofit2.http.POST;
 public interface NetworkInterface {
     @Headers({"Content-Type: application/json"})
 
-    //@FormUrlEncoded
     @POST("/api/v1/sessions")
     Call<Token> userLogin(@Body User user);
 
