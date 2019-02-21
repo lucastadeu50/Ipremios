@@ -32,6 +32,14 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
         getLoginIntractor.getLogin(this, user);
     }
 
+    @Override
+    public void onValidationSuccess(String email, String password) {
+        if (loginView != null){
+            loginView.formValidation(email, password);
+        }
+
+    }
+
 
     @Override
     public void onFinished(Token token, boolean loginSuccess) {
@@ -57,6 +65,7 @@ public class LoginPresenterImpl implements LoginContract.presenter, LoginContrac
             loginView.onAuthFailure();
 
         }
+
 
 
     }

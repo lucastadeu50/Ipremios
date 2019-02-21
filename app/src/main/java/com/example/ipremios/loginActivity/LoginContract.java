@@ -13,21 +13,22 @@ public interface LoginContract {
 
         void requestDataFromServer(User user);
 
-
-
+        void onValidationSuccess(String email, String password);
 
     }
 
        interface LoginView {
         void onResponseFailure(Throwable throwable);
 
-           void onAuthFailure();
+        void onAuthFailure();
 
-           void showProgress();
+        void showProgress();
 
         void hideProgress();
 
         void login(Boolean loginSucess, Token token);
+
+        void formValidation(String email, String password);
 
     }
 

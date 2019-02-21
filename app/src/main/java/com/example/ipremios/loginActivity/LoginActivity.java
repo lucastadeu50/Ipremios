@@ -53,40 +53,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
             public void onClick(View v) {
                 email = textInputEmail.getText().toString();
                 password = textInputPassword.getText().toString();
+                presenter.onValidationSuccess(email, password);
 
-                Log.d(TAG, "onClick: " + email);
-
-                checkCredentials(email, password);
+                if(isEmailValid(email) && isPasswordValid(password)) {
+                    Session session = new Session(password,email);
+                    User user = new User(session);
+                    initProgressBar();
+                    presenter.requestDataFromServer(user);
+                    presenter.onButtonClick(user);
+                }
 
             }
         });
     }
 
-    private void checkCredentials(String email, String password) {
-        if(isEmailValid(email) && isPasswordValid(password)) {
-            Session session = new Session(password,email);
-            User user = new User(session);
-            initProgressBar();
-            presenter.requestDataFromServer(user);
-            presenter.onButtonClick(user);
-        }
-        else if (email.equals("")){
-            textInputEmail.setError(getString(R.string.error_field_required));
-            textInputEmail.requestFocus();
-        }
-        else if(!isEmailValid(email)){
-            textInputEmail.setError(getString(R.string.error_invalid_email));
-            textInputEmail.requestFocus();
-        }
-        else if (password.equals("")){
-            textInputPassword.setError(getString(R.string.error_field_required));
-            textInputPassword.requestFocus();
-        }
-        else if (!isPasswordValid(password)){
-            textInputPassword.setError(getString(R.string.error_invalid_password));
-            textInputPassword.requestFocus();
-        }
-    }
+
 
     private void initProgressBar() {
         progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
@@ -144,8 +125,28 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(getString(R.string.accessToken), token.getResponse().getAccessToken());
             editor.apply();
-            Log.d(TAG, "login: token" + token.getResponse().getAccessToken());
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void formValidation(String email, String password) {
+
+        if (email.equals("")){
+            textInputEmail.setError(getString(R.string.error_field_required));
+            textInputEmail.requestFocus();
+        }
+        else if(!isEmailValid(email)){
+            textInputEmail.setError(getString(R.string.error_invalid_email));
+            textInputEmail.requestFocus();
+        }
+        else if (password.equals("")){
+            textInputPassword.setError(getString(R.string.error_field_required));
+            textInputPassword.requestFocus();
+        }
+        else if (!isPasswordValid(password)){
+            textInputPassword.setError(getString(R.string.error_invalid_password));
+            textInputPassword.requestFocus();
         }
     }
 }
